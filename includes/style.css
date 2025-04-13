@@ -1,0 +1,10 @@
+
+  #sunIcon, #moonIcon {
+    transition: opacity 0.3s ease;
+    opacity: 0.3;
+  }
+  #sunIcon.active, #moonIcon.active {
+    opacity: 1;
+    color: gold;
+  }
+
