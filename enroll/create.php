@@ -40,7 +40,7 @@ $student_result = mysqli_query($conn, $student_query);
 <body>
     <div class="container">
         <h2>Create Enrollment</h2>
-        <form  method="POST">
+        <form  method="POST" action="enroll/create.php">
             <div class="mb-3">
                 <label for="class_code">Class Section</label>
                 <select name="class_code" id="class_code" class="form-control" required>

@@ -32,14 +32,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
         //code...
     } catch (\Throwable $th) {
-        echo "<div class='container alert alert-danger'>This record cannot be deleted because it is referenced as a foreign key in another table.</div>";
+        header("Location: /tiny-college/?page=enroll/delete&class_code=$class_code&stu_num=$stu_num&error=foreign_key");
+        exit();
     }
 }
 
 mysqli_close($conn);
 ?>
 
-
+<?php if (isset($_GET['error']) && $_GET['error'] == 'foreign_key'): ?>
+    <div class="container alert alert-danger">
+        This record cannot be deleted because it is referenced as a foreign key in another table.
+    </div>
+<?php endif; ?>
 <div class="container mt-4">
     <h2>Delete Enrollment</h2>
     <p><strong>Class Section:</strong> <?= $row['class_section'] ?></p>

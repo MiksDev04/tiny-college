@@ -23,12 +23,11 @@
 
 
         <?php
-        include "./includes/navbar.php";
-        $page = isset($_GET['page']) ? $_GET['page'] : 'account/login';
+        include "./includes/navbar.php"; // Include the navigation bar
+
+        $page = isset($_GET['page']) ? $_GET['page'] : 'includes/home';
         $allowed_pages = [
             'includes/home',
-            'account/login',
-            'account/register',
             'building/index',
             'building/create',
             'building/update',
@@ -73,7 +72,7 @@
         ];
 
         if (!in_array($page, $allowed_pages)) {
-            $page = 'account/login'; // Default to home if the page is not allowed
+            $page = 'includes/home'; // Default to home if the page is not allowed
         }
         include "$page.php"; // Include the requested page
 

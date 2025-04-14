@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="container mt-4">
     <h2>Update Class</h2>
-    <form method="post">
+    <form method="post"  action="class/update.php?id=<?= $id ?>">
         <div class="mb-3"><label>Section</label><input type="text" name="class_section" value="<?= $data['class_section'] ?>" class="form-control" required></div>
         <div class="mb-3"><label>Time</label><input type="time" name="class_time" value="<?= $data['class_time'] ?>" class="form-control" required></div>
         <div class="mb-3">

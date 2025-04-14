@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="container mt-4">
     <h2>Update Student</h2>
-    <form method="post">
+    <form method="post" action="student/update.php?id=<?= $id ?>">
         <div class="mb-3"><label class="form-label">Department</label>
             <select name="dept_code" class="form-select" required>
                 <option value="">-- Select Department --</option>

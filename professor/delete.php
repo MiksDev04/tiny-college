@@ -16,11 +16,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: /tiny-college/?page=professor/index");
         exit();
     } catch (\Throwable $th) {
-        echo "<div class='container alert alert-danger'>This record cannot be deleted because it is referenced as a foreign key in another table.</div>";
+        header("Location: /tiny-college/?page=professor/delete&id=$id&error=foreign_key");
+        exit();
     }
 }
 ?>
-
+<?php if (isset($_GET['error']) && $_GET['error'] == 'foreign_key'): ?>
+    <div class="container alert alert-danger">
+        This record cannot be deleted because it is referenced as a foreign key in another table.
+    </div>
+<?php endif; ?>
 <div class="container mt-4">
     <h2>Delete Professor</h2>
     <p>Are you sure you want to delete the following professor?</p>
@@ -34,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <li><strong>Initial:</strong> <?= htmlspecialchars($row['prof_initial']) ?></li>
         <li><strong>Email:</strong> <?= htmlspecialchars($row['prof_email']) ?></li>
     </ul>
-    <form method="post">
+    <form method="post" action="professor/delete.php?id=<?= $id ?>">
         <button type="submit" name="delete" class="btn btn-danger">Delete</button>
         <a href="?page=professor/index" class="btn btn-secondary">Cancel</a>
     </form>

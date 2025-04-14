@@ -76,8 +76,8 @@
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           <h6 class="text-uppercase fw-bold mb-4 text-light">Quick Links</h6>
           <p><a href="?page=home" class="text-reset">Home</a></p>
-          <p><a href="?page=account/login" class="text-reset">Login</a></p>
-          <p><a href="?page=account/register" class="text-reset">Register</a></p>
+          <p><a href="/tiny-college/account/login.php" class="text-reset">Login</a></p>
+          <p><a href="/tiny-college/account/register.php" class="text-reset">Register</a></p>
           <p><a href="?page=includes/contact" class="text-reset">Contact Us</a></p>
         </div>
 

@@ -40,7 +40,7 @@ $result = mysqli_query($conn, $sql);
                             <td><?= $row['prof_initial'] ?></td>
                             <td><?= $row['prof_email'] ?></td>
                             <td>
-                                <a href="?page=professor/update&id=<?= $row['prof_num'] ?>" class="btn btn-primary btn-sm">Update</a>
+                                <a href="?page=professor/update&id=<?= $row['prof_num'] ?>" class="btn btn-warning btn-sm">Update</a>
                                 <a href="?page=professor/delete&id=<?= $row['prof_num'] ?>" class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>

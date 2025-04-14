@@ -36,7 +36,7 @@
                     <a class="nav-link" href="?page=includes/contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?page=account/login">Account</a>
+                    <a class="nav-link" href="/tiny-college/account/login.php">Account</a>
                 </li>
             </ul>
         </div>

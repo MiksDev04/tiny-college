@@ -38,7 +38,7 @@ $result = mysqli_query($conn, "SELECT c.*, p.prof_fname, p.prof_lname, s.semeste
                             <td><?= $row['room_code'] ?></td>
                             <td><?= $row['semester_year'] ?></td>
                             <td>
-                                <a href="?page=class/update&id=<?= $row['class_code'] ?>" class="btn btn-primary btn-sm">Update</a>
+                                <a href="?page=class/update&id=<?= $row['class_code'] ?>" class="btn btn-warning btn-sm">Update</a>
                                 <a href="?page=class/delete&id=<?= $row['class_code'] ?>" class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>

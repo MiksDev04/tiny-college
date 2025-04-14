@@ -13,20 +13,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password = mysqli_real_escape_string($conn, $_POST['password']);
-    
+
 
     // Check if email already exists
     $check_email_query = "SELECT * FROM users WHERE email = '$email'";
     $result = mysqli_query($conn, $check_email_query);
-    
+
     if (mysqli_num_rows($result) > 0) {
         echo "<div class='container alert alert-danger text-center'>Email is already taken.</div>";
     } else {
         // Insert user into the database
         $query = "INSERT INTO users (fullname, email, password) VALUES ('$fullname', '$email', '$password')";
-        
+
         if (mysqli_query($conn, $query)) {
-            header("Location: /tiny-college/?page=account/login"); // Redirect to login page after successful registration
+            header("Location: /tiny-college/account/login.php"); // Redirect to login page after successful registration
             exit();
         } else {
             echo "<script>alert('Error: " . mysqli_error($conn) . "');</script>";
@@ -34,6 +34,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./includes/style.css">
+    <link rel="stylesheet" href="/tiny-college/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+
 
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -57,10 +72,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary">Create Account</button>
                         </div>
-                        <p class="text-center mt-3">Already have an account? <a href="?page=account/login">Login here</a>.</p>
+                        <p class="text-center mt-3">Already have an account? <a href="/tiny-college/account/login.php">Login here</a>.</p>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="/tiny-college/bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

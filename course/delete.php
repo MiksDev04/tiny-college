@@ -14,11 +14,16 @@ if (isset($_POST['delete'])) {
         header("Location: ?page=course/index");
         exit();
     } catch (\Throwable $th) {
-        echo "<div class='container alert alert-danger'>This record cannot be deleted because it is referenced as a foreign key in another table.</div>";
+        header("Location: ?page=course/delete&id=$id&error=foreign_key");
+        exit();
     }
 }
 ?>
-
+<?php if (isset($_GET['error']) && $_GET['error'] == 'foreign_key'): ?>
+    <div class="container alert alert-danger">
+        This record cannot be deleted because it is referenced as a foreign key in another table.
+    </div>
+<?php endif; ?>
 <div class="container mt-4">
     <h2>Delete Course</h2>
     <p>Are you sure you want to delete this course?</p>
@@ -29,7 +34,7 @@ if (isset($_POST['delete'])) {
         <li><strong>Credit:</strong> <?= $course['crs_credit'] ?></li>
         <li><strong>Department:</strong> <?= $course['dept_name'] ?></li>
     </ul>
-    <form method="post">
+    <form method="post" action="course/delete.php?id=<?= $id ?>">
         <button name="delete" class="btn btn-danger">Delete</button>
         <a href="?page=course/index" class="btn btn-secondary">Cancel</a>
     </form>

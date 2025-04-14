@@ -23,7 +23,7 @@ $profs = mysqli_query($conn, "SELECT * FROM professor");
 
 <div class="container mt-4">
     <h2>Create Department</h2>
-    <form method="POST">
+    <form method="POST" action="department/create.php">
         <div class="mb-3">
             <label>Dept Name</label>
             <input type="text" name="dept_name" class="form-control" required>

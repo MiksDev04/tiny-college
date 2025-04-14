@@ -26,7 +26,7 @@ $courses = mysqli_query($conn, "SELECT c.*, d.dept_name FROM course c LEFT JOIN 
                             <td><?= $row['crs_credit'] ?></td>
                             <td><?= htmlspecialchars($row['dept_name']) ?></td>
                             <td>
-                                <a href="?page=course/update&id=<?= $row['crs_code'] ?>" class="btn btn-primary btn-sm">Update</a>
+                                <a href="?page=course/update&id=<?= $row['crs_code'] ?>" class="btn btn-warning btn-sm">Update</a>
                                 <a href="?page=course/delete&id=<?= $row['crs_code'] ?>" class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>
@@ -35,6 +35,8 @@ $courses = mysqli_query($conn, "SELECT c.*, d.dept_name FROM course c LEFT JOIN 
             </table>
         </div>
     <?php else: ?>
-        <p>No course records available.</p>
+        <div class="alert alert-info" role="alert">
+            No professor found. Please create a new professor record.
+        </div>
     <?php endif; ?>
 </div>

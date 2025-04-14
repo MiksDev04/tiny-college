@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="container mt-4">
     <h2>Add Course</h2>
-    <form method="post">
+    <form method="post" action="course/create.php">
         <div class="mb-3"><label>Title</label><input name="crs_title" class="form-control" required></div>
         <div class="mb-3"><label>Description</label><textarea name="crs_description" class="form-control"></textarea></div>
         <div class="mb-3"><label>Credit</label><input name="crs_credit" type="number" class="form-control" required></div>

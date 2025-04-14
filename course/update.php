@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="container mt-4">
     <h2>Update Course</h2>
-    <form method="post">
+    <form method="post" action="course/update.php?id=<?= $id ?>">
         <div class="mb-3"><label>Title</label><input name="crs_title" value="<?= $course['crs_title'] ?>" class="form-control" required></div>
         <div class="mb-3"><label>Description</label><textarea name="crs_description" class="form-control"><?= $course['crs_description'] ?></textarea></div>
         <div class="mb-3"><label>Credit</label><input name="crs_credit" type="number" value="<?= $course['crs_credit'] ?>" class="form-control" required></div>

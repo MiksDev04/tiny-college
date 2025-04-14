@@ -31,21 +31,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: /tiny-college/?page=semester/index"); // Redirect to the read page
         exit();
     } catch (\Throwable $th) {
-        echo "<div class='container alert alert-danger'>This record cannot be deleted because it is referenced as a foreign key in another table.</div>";
+        header("Location: /tiny-college/?page=semester/delete&semester_code=$semester_code&error=foreign_key"); 
+        exit();
     }
    
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Delete Semester</title>
-</head>
-<body>
+<?php if (isset($_GET['error']) && $_GET['error'] == 'foreign_key'): ?>
+    <div class="container alert alert-danger">
+        This record cannot be deleted because it is referenced as a foreign key in another table.
+    </div>
+<?php endif; ?>
     <div class="container mt-5">
         <h2>Delete Semester</h2>
         <p>Are you sure you want to delete this semester?</p>
@@ -57,10 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <li><strong>End Date:</strong> <?php echo $semester['semester_end_date']; ?></li>
         </ul>
 
-        <form method="POST">
+        <form method="POST" action="semester/delete.php?semester_code=<?php echo $semester_code; ?>">
             <button type="submit" class="btn btn-danger">Delete Semester</button>
             <a href="?page=semester/index" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
-</body>
-</html>

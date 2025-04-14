@@ -34,7 +34,7 @@ $result = mysqli_query($conn, "SELECT student.*, department.*, professor.*
                             <td><?= $row['dept_name'] ?></td>
                             <td>Prof. <?= $row['prof_lname'] ?>, <?= $row['prof_fname'] ?> <?= $row['prof_initial'] ?>.</td>
                             <td>
-                                <a href="?page=student/update&id=<?= $row['stu_num'] ?>" class="btn btn-primary btn-sm">Update</a>
+                                <a href="?page=student/update&id=<?= $row['stu_num'] ?>" class="btn btn-warning btn-sm">Update</a>
                                 <a href="?page=student/delete&id=<?= $row['stu_num'] ?>" class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>

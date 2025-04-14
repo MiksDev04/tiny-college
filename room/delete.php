@@ -18,17 +18,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: /tiny-college/?page=room/index"); // Redirect to the read page
         exit();
     } catch (\Throwable $th) {
-        echo "<div class='container alert alert-danger'>This record cannot be deleted because it is referenced as a foreign key in another table.</div>";
+        header("Location: /tiny-college/?page=room/delete&room_code=$room_code&error=foreign_key");
+        exit();
     }
 }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Delete Room</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+
+<?php if (isset($_GET['error']) && $_GET['error'] == 'foreign_key'): ?>
+    <div class="container alert alert-danger">
+        This record cannot be deleted because it is referenced as a foreign key in another table.
+    </div>
+<?php endif; ?>
 <div class="container mt-4">
     <h2>Delete Room</h2>
     <p>Are you sure you want to delete the following room?</p>
@@ -37,10 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <li><strong>Room Type:</strong> <?= $room['room_type'] ?></li>
         <li><strong>Building Code:</strong> <?= $room['bldg_code'] ?></li>
     </ul>
-    <form method="POST">
+    <form method="POST" action="room/delete.php?room_code=<?= $room_code ?>">
         <button type="submit" class="btn btn-danger">Delete</button>
         <a href="?page=room/index" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
-</body>
-</html>

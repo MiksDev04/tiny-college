@@ -42,7 +42,7 @@ $result = mysqli_query($conn, $query);
                             <td><?= $row['enroll_date'] ?></td>
                             <td><?= $row['enroll_grade'] ?></td>
                             <td>
-                                <a href="?page=enroll/update&class_code=<?= $row['class_code'] ?>&stu_num=<?= $row['stu_num'] ?>" class="btn btn-warning">Edit</a>
+                                <a href="?page=enroll/update&class_code=<?= $row['class_code'] ?>&stu_num=<?= $row['stu_num'] ?>" class="btn btn-warning">Update</a>
                                 <a href="?page=enroll/delete&class_code=<?= $row['class_code'] ?>&stu_num=<?= $row['stu_num'] ?>" class="btn btn-danger">Delete</a>
                             </td>
                         </tr>
