@@ -1,4 +1,5 @@
 <?php
+
 // Include DB connection
 $host = 'localhost';
 $user = 'root';
@@ -18,9 +19,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $query = "INSERT INTO enroll (class_code, stu_num, enroll_date, enroll_grade) 
               VALUES ('$class_code', '$stu_num', '$enroll_date', '$enroll_grade')";
 
-    mysqli_query($conn, $query);
-    header("Location: /tiny-college/?page=enroll/index");
-    exit();
+    try {
+        mysqli_query($conn, $query);
+        header("Location: /tiny-college/?page=enroll/index");
+        exit();
+        
+    } catch (\Throwable $th) {
+        header("Location: /tiny-college/?page=enroll/create&error=foreign_key");
+        exit();
+    }
 }
 
 $class_query = "SELECT class_code, class_section FROM class";
@@ -29,15 +36,11 @@ $class_result = mysqli_query($conn, $class_query);
 $student_result = mysqli_query($conn, $student_query);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Enrollment</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+<?php if (isset($_GET['error']) && $_GET['error'] == 'foreign_key'): ?>
+    <div class="container alert alert-danger">
+        This record cannot be added because it is already existing in the table.
+    </div>
+<?php endif; ?>
     <div class="container">
         <h2>Create Enrollment</h2>
         <form  method="POST" action="enroll/create.php">
@@ -75,5 +78,3 @@ $student_result = mysqli_query($conn, $student_query);
             <a href="?page=enroll/index" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
-</body>
-</html>

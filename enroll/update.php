@@ -25,9 +25,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $update_query = "UPDATE enroll SET class_code='$class_code2', stu_num='$stu_num2', enroll_date='$enroll_date', enroll_grade='$enroll_grade' 
                      WHERE class_code = '$class_code' AND stu_num = '$stu_num'";
 
-    mysqli_query($conn, $update_query);
+    try {
+        mysqli_query($conn, $update_query);
     header("Location: /tiny-college/?page=enroll/index");
     exit();
+        //code...
+    } catch (\Throwable $th) {
+        header("Location: /tiny-college/?page=enroll/update&class_code=$class_code&stu_num=$stu_num&error=foreign_key");
+        exit();
+    }
 }
 
 $class_query = "SELECT class_code, class_section FROM class";
@@ -35,10 +41,14 @@ $student_query = "SELECT stu_num, CONCAT(stu_lname, ', ', stu_fname) AS full_nam
 $class_result = mysqli_query($conn, $class_query);
 $student_result = mysqli_query($conn, $student_query);
 ?>
-
+<?php if (isset($_GET['error']) && $_GET['error'] == 'foreign_key'): ?>
+    <div class="container alert alert-danger">
+        This record cannot be updated into that because it is already existing in the table.
+    </div>
+<?php endif; ?>
 <div class="container mt-3">
     <h2>Update Enrollment</h2>
-    <form action="?page=enroll/update&class_code=<?= $class_code ?>&stu_num=<?= $stu_num ?>" method="POST">
+    <form method="POST" action="enroll/update.php?class_code=<?= $class_code ?>&stu_num=<?= $stu_num ?>">
         <div class="mb-3">
             <label for="class_code">Class Section</label>
             <select name="class_code" id="class_code" class="form-control" required>

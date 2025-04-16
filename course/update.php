@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     mysqli_query($conn, "UPDATE course SET dept_code='$dept', crs_title='$title', crs_description='$desc', crs_credit='$credit'
                          WHERE crs_code = $id");
-    header("Location: ?page=course/index");
+    header("Location: /tiny-college/?page=course/index");
     exit();
 }
 ?>

@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     mysqli_query($conn, "INSERT INTO course ( dept_code, crs_title, crs_description, crs_credit)
                          VALUES ( '$dept', '$title', '$desc', '$credit')");
-    header("Location: ?page=course/index");
+    header("Location: /tiny-college/?page=course/index");
     exit();
 }
 ?>

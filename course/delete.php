@@ -11,10 +11,10 @@ $course = mysqli_fetch_assoc(mysqli_query($conn, "
 if (isset($_POST['delete'])) {
     try {
         mysqli_query($conn, "DELETE FROM course WHERE crs_code = $id");
-        header("Location: ?page=course/index");
+        header("Location: /tiny-college/?page=course/index");
         exit();
     } catch (\Throwable $th) {
-        header("Location: ?page=course/delete&id=$id&error=foreign_key");
+        header("Location: /tiny-college/?page=course/delete&id=$id&error=foreign_key");
         exit();
     }
 }

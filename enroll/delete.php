@@ -52,7 +52,7 @@ mysqli_close($conn);
     <p><strong>Enrollment Date:</strong> <?= $row['enroll_date'] ?></p>
     <p><strong>Grade:</strong> <?= $row['enroll_grade'] ?></p>
 
-    <form action="?page=enroll/delete&class_code=<?= $row['class_code'] ?>&stu_num=<?= $row['stu_num'] ?>" method="POST">
+    <form action="enroll/delete.php?class_code=<?= $row['class_code'] ?>&stu_num=<?= $row['stu_num'] ?>" method="POST">
         <button type="submit" class="btn btn-danger">Confirm Delete</button>
         <a href="?page=enroll/index" class="btn btn-secondary">Cancel</a>
     </form>
