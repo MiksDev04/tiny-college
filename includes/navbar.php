@@ -1,7 +1,7 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark bg-light">
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="container">
-        <div class="d-flex align-items-center justify-content-between px-3 py-2 border-bottom">
+        <div class="d-flex align-items-center justify-content-between px-3 py-2 ">
             <a class="navbar-brand fs-4 fw-bold text-primary" href="#">Tiny College</a>
 
             <div class="d-flex align-items-center gap-2">
@@ -36,7 +36,7 @@
                     <a class="nav-link" href="?page=includes/contact">Contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/tiny-college/account/login.php">Account</a>
+                    <a class="nav-link" href="/tiny-college/account/login.php" onclick="return confirm('Are you sure you want to logout?');">Logout</a>
                 </li>
             </ul>
         </div>

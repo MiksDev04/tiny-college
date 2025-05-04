@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./includes/style.css">
     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    
     <title>Document</title>
     <!-- Set theme early -->
     <script>
@@ -25,7 +26,7 @@
         <?php
         include "./includes/navbar.php"; // Include the navigation bar
 
-        $page = isset($_GET['page']) ? $_GET['page'] : 'includes/home';
+        $page = isset($_GET['page']) ? $_GET['page'] : 'account/login';
         $allowed_pages = [
             'includes/home',
             'building/index',

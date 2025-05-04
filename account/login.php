@@ -60,13 +60,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                         <?php endif; ?>
 
                         <form method="POST">
-                            <div class="mb-3">
+                            <div class="form-floating mb-3">
+                                <input type="email" name="email" id="email" class="form-control" placeholder="juandelacruz@gmail.com" required>
                                 <label for="email" class="form-label">Email address</label>
-                                <input type="email" name="email" id="email" class="form-control" required>
                             </div>
-                            <div class="mb-3">
+                            <div class="form-floating mb-3">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="1234" required>
                                 <label for="password" class="form-label">Password</label>
-                                <input type="password" name="password" id="password" class="form-control" required>
                             </div>
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-success">Login</button>
